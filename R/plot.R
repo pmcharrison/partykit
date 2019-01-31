@@ -3,7 +3,7 @@
   if("(weights)" %in% names(dat)) sum(dat[["(weights)"]]) else NROW(dat)
 }
 
-node_inner <- function(obj, id = TRUE, pval = TRUE, abbreviate = FALSE, fill = "white", gp = gpar())
+node_inner <- function(obj, id = TRUE, pval = TRUE, abbreviate = FALSE, fill = "white", gp = gpar(), bordercol = "black")
 {
   meta <- obj$data
   nam <- names(obj)
@@ -68,7 +68,8 @@ node_inner <- function(obj, id = TRUE, pval = TRUE, abbreviate = FALSE, fill = "
 
     grid.polygon(x = unit(c(xell, rev(xell)), "npc"),
         	 y = unit(c(yell, -yell)+0.5, "npc"),
-        	 gp = gpar(fill = fill[1]))
+        	 gp = gpar(fill = fill[1],
+			   col = bordercol))
 
     ## FIXME: something more general instead of pval ?
     grid.text(lab[1L], y = unit(1.5 + 0.5 * (lab[2L] != ""), "lines"))
