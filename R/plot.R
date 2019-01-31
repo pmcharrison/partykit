@@ -443,6 +443,7 @@ node_barplot <- function(obj,
 			 beside = NULL,
 		         ymax = NULL,
 		         ylines = NULL,
+			 ylabels = TRUE,
 		         widths = 1,
 		         gap = NULL,
 			 reverse = NULL,
@@ -585,7 +586,7 @@ node_barplot <- function(obj,
 	} else {
   	  ycenter <- cumsum(pred) - pred
 
-          if(np > 1) {
+          if(np > 1 && ylabels) {
 	    grid.text(ylevels[1], x = unit(-1, "lines"), y = 0,
                       just = c("left", "center"), rot = 90,
 	              default.units = "native", check.overlap = TRUE)
@@ -593,7 +594,7 @@ node_barplot <- function(obj,
                       just = c("right", "center"), rot = 90,
 	              default.units = "native", check.overlap = TRUE)
 	  }
-          if(np > 2) {
+          if(np > 2 && ylabels) {
 	    grid.text(ylevels[-c(1,np)], x = unit(-1, "lines"), y = ycenter[-c(1,np)],
                       just = "center", rot = 90,
 	              default.units = "native", check.overlap = TRUE)
