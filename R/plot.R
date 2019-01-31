@@ -12,7 +12,8 @@ node_inner <- function(obj, id = TRUE, pval = TRUE, abbreviate = FALSE, fill = "
     if(is.terminal(node)) return(rep.int("", 2L))
 
     varlab <- character_split(split_node(node), meta)$name
-    if(abbreviate > 0L) varlab <- abbreviate(varlab, as.integer(abbreviate))
+    if (is.function(abbreviate)) varlab <- abbreviate(varlab) else 
+      if (abbreviate > 0L) varlab <- abbreviate(varlab, as.integer(abbreviate))
 
     ## FIXME: make more flexible rather than special-casing p-value
     if(pval) {
